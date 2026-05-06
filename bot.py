@@ -3,10 +3,9 @@ from discord.ext import commands
 from datetime import datetime, timedelta
 import json
 import os
-
-os.environ["DISCORD_INSTANCE_NO_VOICE"] = "true"
-
-TOKEN = 'MTQ5OTcxNDI5MDI3NjQ5OTQ3Ng.G0187B.UXNOtwNFlrkB_P1ovUjlJOX781L8Rl2wrQwxDQ'  # Сюда вставите токен
+TOKEN = os.getenv('DISCORD_TOKEN')
+if not TOKEN:
+    raise ValueError("Переменная окружения DISCORD_TOKEN не задана")
 
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 
